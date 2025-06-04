@@ -1,0 +1,5 @@
+rik,rik@gmail.com,123456,0
+rik,rik@gmail.com,123456,0
+rik,rik@gmail.com,123456,0
+rik,rik@gmail.com,123456,0
+rik,rik@gmail.com,1234567,0

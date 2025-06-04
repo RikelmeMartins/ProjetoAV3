@@ -1,7 +1,7 @@
 import os
 import usuarios.cadastro as cadastro
 import validacao.entrada_texto as entrada_texto
-import validacao.senha as senha
+import validacao.senha as sen
 import validacao.email as en
 usuarios = list()
 passageiros = list()
@@ -79,19 +79,32 @@ while True:
             print(f"{roxo}Preencha os dados abaixo para cadastrar um passageiro:\n")
             nome = entrada_texto.obter_entrada_valida("Nome: ")
             email = en.obter_email_valido("Email: ")
-            senha = senha.obter_senha_valida("Senha: ")
-            usuario = cadastro.cadastrar_usuario(nome, email, senha)
+            senha = entrada_texto.obter_entrada_valida("Senha: ")
+            while not sen.verificar_senha(senha):
+                print(f"{vermelho}Senha inválida! Tente novamente.")
+                senha = entrada_texto.obter_entrada_valida("Senha: ")
+            usuario = cadastro.cadastrar_passageiro(nome, email, senha)
             passageiros.append(usuario)
-        
+            print(f"{verde}Cadastro de passageiro realizado com sucesso!")
+            input(f"{roxo}Aperte enter para continuar...")
+            os.system('cls' if os.name == 'nt' else 'clear')
+
         elif (op == '2'):
             os.system('cls' if os.name == 'nt' else 'clear')
             print("\nCadastro de motoristas!\n")
             print(f"{roxo}Preencha os dados abaixo para cadastrar um motorista:\n")
             nome = entrada_texto.obter_entrada_valida("Nome: ")
             email = en.obter_email_valido("Email: ")
-            senha = senha.obter_senha_valida("Senha: ")
-            usuario = cadastro.cadastrar_usuario(nome, email, senha)
+            senha = entrada_texto.obter_entrada_valida("Senha: ")
+            while not sen.verificar_senha(senha):
+                print(f"{vermelho}Senha inválida! Tente novamente.")
+                senha = entrada_texto.obter_entrada_valida("Senha: ")
+            usuario = cadastro.cadastrar_motorista(nome, email, senha)
             motoristas.append(usuario)
+            print(f"{verde}Cadastro de motorista realizado com sucesso!")
+            input(f"{roxo}Aperte enter para continuar...")
+            os.system('cls' if os.name == 'nt' else 'clear')
+           
         
         elif (op == '3'):
             os.system('cls' if os.name == 'nt' else 'clear')
@@ -99,6 +112,12 @@ while True:
             print(f"{roxo}Preencha os dados abaixo para cadastrar um admin:\n")
             nome = entrada_texto.obter_entrada_valida("Nome: ")
             email = en.obter_email_valido("Email: ")
-            senha = senha.obter_senha_valida("Senha: ")
-            usuario = cadastro.cadastrar_usuario(nome, email, senha)
+            senha = entrada_texto.obter_entrada_valida("Senha: ")
+            while not sen.verificar_senha(senha):
+                print(f"{vermelho}Senha inválida! Tente novamente.")
+                senha = entrada_texto.obter_entrada_valida("Senha: ")
+            usuario = cadastro.cadastrar_admin(nome, email, senha)
             admin.append(usuario)
+            print(f"{verde}Cadastro de admin realizado com sucesso!")
+            input(f"{roxo}Aperte enter para continuar...")
+            os.system('cls' if os.name == 'nt' else 'clear')
