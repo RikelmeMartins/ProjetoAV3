@@ -20,7 +20,7 @@ def cadastrar_motorista(email, nome, senha):
         'senha': senha,
         'caronas': 0
     }
-    dados = f"{usuario['email']},{usuario['nome']},{usuario['senha']},{usuario['saldo']}\n"
+    dados = f"{usuario['email']},{usuario['nome']},{usuario['senha']},{usuario['caronas']}\n"
     with open(caminho, 'a') as arquivo:
         arquivo.write(dados)
         
