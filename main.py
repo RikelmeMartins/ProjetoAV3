@@ -78,19 +78,16 @@ def menu_admin():
 
 # Início do programa
 while True:
-    bemvindo = f"""{roxo}
+    print(f"{roxo}=" * 130)
+    print(f"""{roxo}
  ____  ______ __  __    __      _______ _   _ _____   ____               ____      _____        _____ _______ _____ _    _ _ 
 |  _ \|  ____|  \/  |   \ \    / /_   _| \ | |  __ \ / __ \        /\   / __ \    |  __ \ /\   |  __ \__   __|_   _| |  | | |
 | |_) | |__  | \  / |    \ \  / /  | | |  \| | |  | | |  | |      /  \ | |  | |   | |__) /  \  | |__) | | |    | | | |  | | |
 |  _ <|  __| | |\/| |     \ \/ /   | | | . ` | |  | | |  | |     / /\ \| |  | |   |  ___/ /\ \ |  _  /  | |    | | | |  | | |
 | |_) | |____| |  | |      \  /   _| |_| |\  | |__| | |__| |    / ____ \ |__| |   | |  / ____ \| | \ \  | |   _| |_| |__| |_|
 |____/|______|_|  |_|       \/   |_____|_| \_|_____/ \____/    /_/    \_\____/    |_| /_/    \_\_|  \_\ |_|  |_____|\____/(_)                                                                                                                                                                                                                  
-    """
-    bemvindoCenter = bemvindo.center(80)
-    print(f"{roxo}=" * 80)
-    print(bemvindoCenter)
-    print(f"{roxo}=" * 80)
-
+    """)
+    print(f"{roxo}=" * 130)
     opcao = menu_principal()
 
     if (opcao == '0'):
@@ -99,19 +96,16 @@ while True:
 
     elif(opcao == '1'):
         os.system('cls' if os.name == 'nt' else 'clear')
-        bemvindo = f"""{roxo}
+        print(f"{roxo}=" * 60)
+        print(f"""{roxo}
    _____          _           _             
   / ____|        | |         | |            
  | |     __ _  __| | __ _ ___| |_ _ __ ___  
  | |    / _` |/ _` |/ _` / __| __| '__/ _ \ 
  | |___| (_| | (_| | (_| \__ \ |_| | | (_) |
   \_____\__,_|\__,_|\__,_|___/\__|_|  \___/                                                                                                                                                                                                               
-    """
-        bemvindoCenter = bemvindo.center(60, " ")
+    """)
         print(f"{roxo}=" * 60)
-        print(bemvindoCenter)
-        print(f"{roxo}=" * 60)
-
         op = menu_cadastro()
 
         if (opcao == '0'):  
@@ -132,7 +126,7 @@ while True:
             while not sen.verificar_senha(senha):
                 print(f"{vermelho}Senha inválida! Tente novamente.")
                 senha = entrada_texto.obter_entrada_valida("Senha: ")
-            usuario = cadastro.cadastrar_passageiro(nome, email, senha)
+            usuario = cadastro.cadastrar_passageiro(email, nome, senha)
             passageiros.append(usuario)
             print(f"{verde}Cadastro de passageiro realizado com sucesso!")
             input(f"{roxo}Aperte enter para continuar...")
@@ -151,7 +145,7 @@ while True:
             while not sen.verificar_senha(senha):
                 print(f"{vermelho}Senha inválida! Tente novamente.")
                 senha = entrada_texto.obter_entrada_valida("Senha: ")
-            usuario = cadastro.cadastrar_motorista(nome, email, senha)
+            usuario = cadastro.cadastrar_motorista(email, nome, senha)
             motoristas.append(usuario)
             print(f"{verde}Cadastro de motorista realizado com sucesso!")
             input(f"{roxo}Aperte enter para continuar...")
@@ -178,7 +172,7 @@ while True:
             while not sen.verificar_senha(senha):
                 print(f"{vermelho}Senha inválida! Tente novamente.")
                 senha = entrada_texto.obter_entrada_valida("Senha: ")
-            usuario = cadastro.cadastrar_admin(nome, email, senha)
+            usuario = cadastro.cadastrar_admin(email, nome, senha)
             admin.append(usuario)
             print(f"{verde}Cadastro de admin realizado com sucesso!")
             input(f"{roxo}Aperte enter para continuar...")
@@ -191,17 +185,15 @@ while True:
             print(f"{roxo}Admins: {admin}")
     elif(opcao == '2'):
         os.system('cls' if os.name == 'nt' else 'clear')
-        bemvindo = f"""{roxo}
+        print(f"{roxo}=" * 60)
+        print(f"""{roxo}
   _      ____   _____ _____ _   _ 
  | |    / __ \ / ____|_   _| \ | |
  | |   | |  | | |  __  | | |  \| |
  | |   | |  | | | |_ | | | | . ` |
  | |___| |__| | |__| |_| |_| |\  |
  |______\____/ \_____|_____|_| \_|                                                                                                                                                                                                                                       
-    """
-        bemvindoCenter = bemvindo.center(60, " ")
-        print(f"{roxo}=" * 60)
-        print(bemvindoCenter)
+    """)
         print(f"{roxo}=" * 60)
         print(f"{roxo}Faça seu login!\n")
         usuario_encontrado = False

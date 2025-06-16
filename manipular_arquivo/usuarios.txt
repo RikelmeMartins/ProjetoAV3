@@ -18,3 +18,7 @@ rik,rik@gmail.com,123456,0
 rik,rik@gmail.com,123456,0
 ias,ias@gmail.com,123456,0
 rik,rik@gmail.com,123456,0
+rik,rik@gmail.com,1234456,0
+ias,ias@gmail.com,12344556,0
+rik@gmail.com,rik,12233232,0
+ias@gmail.com,ias,12221212,0
