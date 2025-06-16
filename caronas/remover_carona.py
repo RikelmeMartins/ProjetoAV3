@@ -1,8 +1,6 @@
-import main as usuario
-caronas = usuario.carona
 verde = "\033[32m"
 vermelho = "\033[31m"
-def remover_carona(data):
+def remover_carona(data, caronas):
     indice = -1
     encontrada = False
     for ind in range(len(caronas)):

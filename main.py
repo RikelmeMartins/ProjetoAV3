@@ -11,6 +11,7 @@ import caronas.remover_reserva as remover_reserva
 import caronas.remover_carona as remover_carona
 import emergencia.cadastro_carona_emergencia as caronas_emergencia
 import passageiro.deposito as depositar_dinheiro
+import manipular_arquivo.resetar_usuarios as resetar_usuarios
 usuarios = list()
 passageiros = list()
 motoristas = list()
@@ -23,6 +24,7 @@ vermelho = '\033[91m'
 azul = '\033[94m'
 chave_acesso = '23052005'
 caminho = 'ProjetoAV3/manipular_arquivo/usuarios.txt'
+caminho_importar = 'ProjetoAV3/manipular_arquivo/import_usuarios.txt'
 
 def menu_principal():
     print(f"{roxo}Escolha uma das opções\n\n"
@@ -76,8 +78,10 @@ def menu_admin():
     op = input("Opção: ")
     return op
 
+resetar_usuarios.resetar_usuarios_txt()
 # Início do programa
 while True:
+    os.system('cls' if os.name == 'nt' else 'clear')
     print(f"{roxo}=" * 130)
     print(f"""{roxo}
  ____  ______ __  __    __      _______ _   _ _____   ____               ____      _____        _____ _______ _____ _    _ _ 
@@ -469,7 +473,11 @@ while True:
                             elif(op == '2'):
                                 os.system('cls' if os.name == 'nt' else 'clear')
                                 print(f"{roxo}Remover carona!\n")
-
+                                if m["caronas"] == 0:
+                                    print(f"{verde}Nenhuma carona cadastrada!\n")
+                                    input(f"{roxo}Aperte enter para continuar...")
+                                    os.system('cls' if os.name == 'nt' else 'clear')
+                                    continue
                                 dataBusca = entrada_texto.obter_entrada_valida(f"{roxo}Informe a data da carona: ")
                                 indice, encontrada = remover_carona.remover_carona(dataBusca)
                                 if encontrada:
@@ -670,13 +678,13 @@ while True:
     elif (op == '3'):
         print(f"{roxo}Importar usuários!\n")
         try:
-            with open(caminho, "r") as f:
+            with open(caminho_importar, "r") as f:
                 for linha in f:
-                    email, nome, tipo = linha.strip().split(",")
+                    email, nome, senha, tipo = linha.strip().split(",")
                     if tipo == "passageiro":
-                        passageiros.append({"email": email, "nome": nome})
+                        passageiros.append({"email": email, "nome": nome, "senha": senha, "saldo": 0.0})
                     elif tipo == "motorista":
-                        motoristas.append({"email": email, "nome": nome})
+                        motoristas.append({"email": email, "nome": nome, "senha": senha, "caronas": 0})
             print(f"{verde}Usuários importados com sucesso!")
         except Exception as e:
             print(f"{vermelho}Erro ao importar usuários: {e}")

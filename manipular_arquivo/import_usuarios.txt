@@ -1,0 +1,2 @@
+rik@gmail.com,rik,123456,0,passageiro
+ias@gmail.com,ias,123456,0,motorista
