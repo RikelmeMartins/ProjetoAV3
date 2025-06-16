@@ -12,6 +12,7 @@ import caronas.remover_carona as remover_carona
 import emergencia.cadastro_carona_emergencia as caronas_emergencia
 import passageiro.deposito as depositar_dinheiro
 import manipular_arquivo.resetar_usuarios as resetar_usuarios
+import relatorios.reset_relatorio as resetar_relatorio  
 usuarios = list()
 passageiros = list()
 motoristas = list()
@@ -79,6 +80,7 @@ def menu_admin():
     return op
 
 resetar_usuarios.resetar_usuarios_txt()
+resetar_relatorio.resetar_relatorio_txt()
 # Início do programa
 while True:
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -592,8 +594,12 @@ while True:
                                             print(f"{roxo}=" * 60)
                                     
                                     salvar = input(f"{roxo}Deseja salvar esse relatório (s/n)? ").upper()
+                                    caminho_relatorio = "ProjetoAV3/relatorios/relatorio.txt"
+                                    if (salvar == 'N'):
+                                        print(f"{roxo}Relatório não salvo!")
+                                        input(f"{roxo}Aperte enter para continuar...")
                                     if (salvar == 'S'):
-                                        with open(f"relatorio_{m['nome']}.txt", "w") as f:
+                                        with open(caminho_relatorio, "w") as f:
                                             f.write(f"Relatório de corridas de {m['nome']}:\n")
                                             f.write(f"Total ganho: R${total_ganho:.2f}\n")
                                             f.write(f"Caronas realizadas:\n")
